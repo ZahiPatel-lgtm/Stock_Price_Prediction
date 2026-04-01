@@ -24,8 +24,7 @@ window = st.sidebar.slider("Average Window (Days)", 2, 30, 5)
 # 3. Fetch Data & Exchange Rate
 data = yf.download(ticker, period="60d")
 exchange_data = yf.download("USDINR=X", period="1d")
-usd_to_inr = float(exchange_data['Close'].iloc[-1])
-
+usd_to_inr = float(exchange_data['Close'].values[0])
 if not data.empty:
     # --- CLEANING DATA ---
     df_cleaned = data[['Close']].dropna()
